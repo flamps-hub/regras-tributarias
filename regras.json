@@ -1,375 +1,519 @@
 {
-  "versao": "2026-07-15.1",
-  "sets": {
-    "MONOFASICO": [
-      "4731",
-      "4732",
-      "4771",
-      "4772",
-      "4530",
-      "4623",
-      "4635",
-      "4691",
-      "4711",
-      "4712"
-    ],
-    "PROFISSIONAL": [
-      "62",
-      "63",
-      "69",
-      "70",
-      "71",
-      "73",
-      "74",
-      "86",
-      "85",
-      "75",
-      "66"
-    ]
-  },
-  "avisos": [
-    {
-      "texto": "Regime exato (Presumido x Real) não é público. As teses abaixo cobrem os dois — confirme o regime com a empresa.",
-      "cond": {
-        "nao_simples": true
-      }
-    },
-    {
-      "texto": "Cada item é sinalização para conferir na fonte, não conclusão. Teses mudam e sao moduladas."
-    },
-    {
-      "texto": "Reforma tributária em transição - regras e prazos mudam por atos infralegais. Confirme sempre na fonte oficial (gov.br/fazenda e CGIBS)."
-    }
+ "versao": "2026-07-22.1",
+ "sets": {
+  "MONOFASICO": [
+   "4731",
+   "4732",
+   "4771",
+   "4772",
+   "4530",
+   "4623",
+   "4635",
+   "4691",
+   "4711",
+   "4712"
   ],
-  "regras": [
-    {
-      "esfera": "Federal",
-      "titulo": "Exclusão do ICMS da base de PIS/COFINS ('tese do século')",
-      "quando": "Contribuintes de PIS/COFINS que recolhem ICMS",
-      "base": "STF Tema 69 (RE 574.706) - transitado, com modulação (mar/2017)",
-      "acao": "Levantar créditos dos últimos 5 anos; conferir modulação e ICMS destacado.",
-      "url": "https://portal.stf.jus.br/repercussaogeral/",
-      "cond": {
-        "nao_simples": true,
-        "setor": [
-          "comercio",
-          "industria",
-          "servicos",
-          "transporte"
-        ]
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Exclusão do ISS da base de PIS/COFINS",
-      "quando": "Prestadores de serviço fora do Simples",
-      "base": "STF RE 592.616 (Tema 118) - EM JULGAMENTO, verifique o status atual",
-      "acao": "Avaliar acao/protecao do prazo enquanto pende; NAO ha trânsito ainda.",
-      "url": "https://portal.stf.jus.br/repercussaogeral/",
-      "cond": {
-        "nao_simples": true,
-        "setor": [
-          "servicos"
-        ]
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Créditos de PIS/COFINS não-cumulativo (conceito de insumo)",
-      "quando": "Aplica ao Lucro Real (não-cumulativo)",
-      "base": "STJ Tema 779 (REsp 1.221.170) - essencialidade e relevancia",
-      "acao": "Se a empresa for Real, revisar insumos creditáveis dos últimos 5 anos.",
-      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
-      "cond": {
-        "nao_simples": true
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "ICMS-ST na base de PIS/COFINS (substituido)",
-      "quando": "Comércio que compra com ICMS-ST",
-      "base": "STJ Tema 1.125 - substituido pode excluir o ICMS-ST",
-      "acao": "Levantar créditos; conferir se a empresa é substituída tributária.",
-      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
-      "cond": {
-        "nao_simples": true
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Contribuição previdenciária sobre verbas indenizatórias",
-      "quando": "Empresas com folha de pagamento",
-      "base": "Jurisprudência STJ/STF (aviso prévio indenizado, etc.)",
-      "acao": "Revisar folha: verbas sem natureza salarial; confirmar cada verba.",
-      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
-      "cond": {
-        "nao_simples": true
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Nao incidência de contribuição sobre salário-maternidade",
-      "quando": "Empresas com empregadas que tiveram licença",
-      "base": "STF Tema 72 (RE 576.967)",
-      "acao": "Recuperar contribuição patronal sobre salário-maternidade (5 anos).",
-      "url": "https://portal.stf.jus.br/repercussaogeral/",
-      "cond": {
-        "nao_simples": true
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "PIS/COFINS monofásico - segregação/recuperação",
-      "quando": "Revenda de produtos monofásicos (farma, combustível, autopeças, bebidas)",
-      "base": "Regime monofásico (Leis 10.147/2000, 10.485/2002 e afins)",
-      "acao": "Segregar receitas monofasicas e recuperar PIS/COFINS pago a maior (conforme o regime).",
-      "url": "https://www.gov.br/receitafederal/pt-br",
-      "cond": {
-        "cnae4_set": "MONOFASICO"
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Fator R - enquadramento Anexo III x Anexo V",
-      "quando": "Serviços onde a folha pesa (>=28% da receita)",
-      "base": "LC 123/2006, art. 18, parágrafos 5-J/5-M",
-      "acao": "Simular fator R: se folha/receita >= 28%, tributa pelo Anexo III (menor).",
-      "url": "https://www.gov.br/receitafederal/pt-br",
-      "cond": {
-        "regime": [
-          "simples"
-        ],
-        "setor": [
-          "servicos"
-        ],
-        "cnae2_set": "PROFISSIONAL"
-      }
-    },
-    {
-      "esfera": "Estadual",
-      "titulo": "Sublimite de ICMS/ISS no Simples (R$ 3,6 mi)",
-      "quando": "EPP que ultrapassa o sublimite",
-      "base": "LC 123/2006 - recolhimento de ICMS/ISS por fora do DAS",
-      "acao": "Conferir se ha recolhimento em duplicidade apos o sublimite.",
-      "url": "https://www.gov.br/receitafederal/pt-br",
-      "cond": {
-        "regime": [
-          "simples"
-        ],
-        "porte": [
-          "EPP"
-        ]
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Revisao de exclusão do Simples / reinclusão",
-      "quando": "Empresas excluídas ou em risco de exclusão",
-      "base": "LC 123/2006 e Resoluções CGSN",
-      "acao": "Verificar legalidade da exclusão e prazo/possibilidade de reinclusão.",
-      "url": "https://www.gov.br/receitafederal/pt-br",
-      "cond": {
-        "regime": [
-          "simples"
-        ]
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Desenquadramento/reenquadramento de MEI",
-      "quando": "MEI que estourou o teto ou mudou atividade",
-      "base": "LC 123/2006 - regras do MEI (teto R$ 81 mil/ano)",
-      "acao": "Avaliar migração para ME no Simples e regularização de excedente.",
-      "url": "https://www.gov.br/receitafederal/pt-br",
-      "cond": {
-        "regime": [
-          "mei"
-        ]
-      }
-    },
-    {
-      "esfera": "Federal",
-      "titulo": "Percentual de presunção reduzido - serviços hospitalares",
-      "quando": "Serviços de saúde com estrutura hospitalar",
-      "base": "STJ (equiparação a serviços hospitalares) - presunção 8%/12%",
-      "acao": "Se Presumido, verificar direito ao percentual menor (vs 32%).",
-      "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
-      "cond": {
-        "nao_simples": true,
-        "setor": [
-          "servicos"
-        ],
-        "cnae2": [
-          "86"
-        ]
-      }
-    },
-    {
-      "esfera": "Estadual",
-      "titulo": "Créditos de ICMS - energia, ativo imobilizado, insumos",
-      "quando": "Indústria (não-cumulatividade do ICMS)",
-      "base": "LC 87/1996 (Lei Kandir)",
-      "acao": "Revisar creditamento de energia elétrica, bens do ativo e insumos.",
-      "url": "https://www.gov.br/pt-br/servicos-estaduais",
-      "cond": {
-        "setor": [
-          "industria"
-        ]
-      }
-    },
-    {
-      "esfera": "Estadual",
-      "titulo": "Restituição de ICMS-ST (base presumida > efetiva)",
-      "quando": "Comércio varejista sob substituição tributária",
-      "base": "STF Tema 201 (RE 593.849)",
-      "acao": "Se vendeu por valor menor que a base presumida, pedir restituição.",
-      "url": "https://portal.stf.jus.br/repercussaogeral/",
-      "cond": {
-        "setor": [
-          "comercio"
-        ]
-      }
-    },
-    {
-      "esfera": "Estadual",
-      "titulo": "DIFAL e base de cálculo em vendas interestaduais",
-      "quando": "Comércio que vende para outros estados/consumidor final",
-      "base": "EC 87/2015 e LC 190/2022",
-      "acao": "Conferir cálculo do DIFAL e eventuais recolhimentos indevidos.",
-      "url": "https://www.gov.br/pt-br/servicos-estaduais",
-      "cond": {
-        "setor": [
-          "comercio"
-        ]
-      }
-    },
-    {
-      "esfera": "Estadual",
-      "titulo": "Programa de parcelamento/anistia de ICMS (Sefaz-{uf})",
-      "quando": "Empresas com débito de ICMS",
-      "base": "Programas periódicos da Secretaria de Fazenda estadual",
-      "acao": "Buscar REFIS/parcelamento vigente na Sefaz-{uf}.",
-      "url": "https://www.google.com/search?q=parcelamento+ICMS+Sefaz+{uf}",
-      "cond": {
-        "uf": true
-      }
-    },
-    {
-      "esfera": "Municipal",
-      "titulo": "Local de incidência do ISS (bitributação)",
-      "quando": "Serviços prestados em mais de um município",
-      "base": "LC 116/2003, art. 3",
-      "acao": "Verificar se o ISS esta sendo pago no município correto (evitar duplicidade).",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
-      "cond": {
-        "setor": [
-          "servicos"
-        ]
-      }
-    },
-    {
-      "esfera": "Municipal",
-      "titulo": "ISS fixo - sociedade uniprofissional",
-      "quando": "Sociedades de profissionais (advocacia, medicina, engenharia, contabilidade)",
-      "base": "DL 406/1968, art. 9, parágrafos 1 e 3 (recepcionado)",
-      "acao": "Avaliar ISS fixo por profissional em vez de % sobre faturamento.",
-      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del0406.htm",
-      "cond": {
-        "setor": [
-          "servicos"
-        ],
-        "cnae2_set": "PROFISSIONAL"
-      }
-    },
-    {
-      "esfera": "Municipal",
-      "titulo": "Programa municipal de anistia/REFIS (ISS/IPTU)",
-      "quando": "Empresas com débito municipal",
-      "base": "Programas periódicos da prefeitura",
-      "acao": "Buscar REFIS municipal vigente na cidade da empresa.",
-      "url": "https://www.google.com/search?q=REFIS+ISS+{municipio}",
-      "cond": {}
-    },
-    {
-      "esfera": "Reforma",
-      "titulo": "Adequação de NF-e/NFS-e aos campos de IBS e CBS",
-      "quando": "Empresas do regime regular (2026)",
-      "base": "LC 214/2025; obrigatoriedade dos campos a partir de 03/08/2026",
-      "acao": "Parametrizar sistemas e documentos fiscais para destacar IBS/CBS (2026 e ano-teste, apuração informativa, sem recolhimento se cumpridas as acessórias).",
-      "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
-      "cond": {
-        "regime_not": [
-          "mei"
-        ]
-      }
-    },
-    {
-      "esfera": "Reforma",
-      "titulo": "Levantamento e homologação de créditos acumulados de ICMS",
-      "quando": "Empresas com saldo credor de ICMS",
-      "base": "LC 214/2025 - créditos não formalizados podem sofrer restrição na transição",
-      "acao": "Identificar, escriturar e comprovar os créditos ANTES dos marcos da transição para preservar o direito de uso/ressarcimento.",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
-      "cond": {
-        "regime_not": [
-          "mei"
-        ]
-      }
-    },
-    {
-      "esfera": "Reforma",
-      "titulo": "Planejamento da transição 2026-2033 (preços, contratos, margens)",
-      "quando": "Todas as empresas do regime regular",
-      "base": "2027: CBS cheia, fim de PIS/COFINS, IS entra, IPI zerado (exceto ZFM). 2029-2032: ICMS/ISS migram para o IBS",
-      "acao": "Revisar formação de preco, cláusulas contratuais de reajuste tributário e fluxo de caixa (split payment) para os próximos anos.",
-      "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
-      "cond": {
-        "regime_not": [
-          "mei"
-        ]
-      }
-    },
-    {
-      "esfera": "Reforma",
-      "titulo": "Impacto em serviços - possível aumento de carga",
-      "quando": "Prestadores de serviço (folha alta, poucos créditos)",
-      "base": "IVA dual com crédito amplo tende a onerar serviços intensivos em mao de obra",
-      "acao": "Simular a carga no novo modelo e avaliar reorganização/créditos disponíveis.",
-      "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
-      "cond": {
-        "regime_not": [
-          "mei"
-        ],
-        "setor": [
-          "servicos"
-        ]
-      }
-    },
-    {
-      "esfera": "Reforma",
-      "titulo": "Enquadramento em regime diferenciado ou específico",
-      "quando": "Setores como saúde, educação, alimentos, transporte etc.",
-      "base": "LC 214/2025 - alíquotas reduzidas/regimes específicos (Anexos)",
-      "acao": "Verificar se a atividade tem redução de alíquota ou regime próprio no novo sistema.",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
-      "cond": {
-        "regime_not": [
-          "mei"
-        ]
-      }
-    },
-    {
-      "esfera": "Reforma",
-      "titulo": "Simples x regime regular na reforma (híbrido)",
-      "quando": "Optantes do Simples Nacional",
-      "base": "LC 214/2025 - Simples dispensado das alíquotas-teste em 2026; opção pelo recolhimento de IBS/CBS 'por fora' pode dar crédito ao cliente",
-      "acao": "Avaliar se compensa recolher IBS/CBS por fora para gerar crédito a clientes PJ.",
-      "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
-      "cond": {
-        "regime": [
-          "simples"
-        ]
-      }
-    }
+  "PROFISSIONAL": [
+   "62",
+   "63",
+   "69",
+   "70",
+   "71",
+   "73",
+   "74",
+   "86",
+   "85",
+   "75",
+   "66"
+  ],
+  "IMOBILIARIO": [
+   "6810",
+   "6821",
+   "6822",
+   "4110"
+  ],
+  "VEDADOS_SIMPLES": [
+   "6810",
+   "4110",
+   "6410",
+   "6421",
+   "6422",
+   "6423",
+   "6424",
+   "6431",
+   "6432",
+   "6433",
+   "6434",
+   "6435",
+   "6436",
+   "6437",
+   "6438",
+   "6440",
+   "6450",
+   "6461",
+   "6462",
+   "6463",
+   "6470",
+   "6491",
+   "6492",
+   "6493",
+   "6499",
+   "6511",
+   "6512",
+   "6520",
+   "6530",
+   "6541",
+   "6542",
+   "6550",
+   "6611",
+   "6612",
+   "6613",
+   "6619",
+   "3511",
+   "3512",
+   "3513",
+   "3514",
+   "4922",
+   "1220",
+   "2550",
+   "7820"
+  ],
+  "BEBIDAS_ALCOOLICAS": [
+   "1111",
+   "1112",
+   "1113",
+   "4635"
+  ],
+  "MAO_DE_OBRA": [
+   "7820",
+   "7830",
+   "7810",
+   "8011",
+   "8012",
+   "8020",
+   "8121",
+   "8122",
+   "8129",
+   "8130"
   ]
+ },
+ "avisos": [
+  {
+   "texto": "Regime exato (Presumido x Real) não é público. As teses abaixo cobrem os dois — confirme o regime com a empresa.",
+   "cond": {
+    "nao_simples": true
+   }
+  },
+  {
+   "texto": "Cada item é sinalização para conferir na fonte, não conclusão. Teses mudam e sao moduladas."
+  },
+  {
+   "texto": "Reforma tributária em transição - regras e prazos mudam por atos infralegais. Confirme sempre na fonte oficial (gov.br/fazenda e CGIBS)."
+  },
+  {
+   "texto": "As vedações ao Simples Nacional (art. 17 da LC 123/2006) aparecem como triagem. Confirme o CNAE efetivo, as receitas auferidas e as exceções legais com o contador."
+  }
+ ],
+ "regras": [
+  {
+   "esfera": "Federal",
+   "titulo": "Exclusão do ICMS da base de PIS/COFINS ('tese do século')",
+   "quando": "Contribuintes de PIS/COFINS que recolhem ICMS",
+   "base": "STF Tema 69 (RE 574.706) - transitado, com modulação (mar/2017)",
+   "acao": "Levantar créditos dos últimos 5 anos; conferir modulação e ICMS destacado.",
+   "url": "https://portal.stf.jus.br/repercussaogeral/",
+   "cond": {
+    "nao_simples": true,
+    "setor": [
+     "comercio",
+     "industria",
+     "servicos",
+     "transporte"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Exclusão do ISS da base de PIS/COFINS",
+   "quando": "Prestadores de serviço fora do Simples",
+   "base": "STF RE 592.616 (Tema 118) - EM JULGAMENTO, verifique o status atual",
+   "acao": "Avaliar acao/protecao do prazo enquanto pende; NAO ha trânsito ainda.",
+   "url": "https://portal.stf.jus.br/repercussaogeral/",
+   "cond": {
+    "nao_simples": true,
+    "setor": [
+     "servicos"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Créditos de PIS/COFINS não-cumulativo (conceito de insumo)",
+   "quando": "Aplica ao Lucro Real (não-cumulativo)",
+   "base": "STJ Tema 779 (REsp 1.221.170) - essencialidade e relevancia",
+   "acao": "Se a empresa for Real, revisar insumos creditáveis dos últimos 5 anos.",
+   "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
+   "cond": {
+    "nao_simples": true
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "ICMS-ST na base de PIS/COFINS (substituido)",
+   "quando": "Comércio que compra com ICMS-ST",
+   "base": "STJ Tema 1.125 - substituido pode excluir o ICMS-ST",
+   "acao": "Levantar créditos; conferir se a empresa é substituída tributária.",
+   "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
+   "cond": {
+    "nao_simples": true
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Contribuição previdenciária sobre verbas indenizatórias",
+   "quando": "Empresas com folha de pagamento",
+   "base": "Jurisprudência STJ/STF (aviso prévio indenizado, etc.)",
+   "acao": "Revisar folha: verbas sem natureza salarial; confirmar cada verba.",
+   "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
+   "cond": {
+    "nao_simples": true
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Nao incidência de contribuição sobre salário-maternidade",
+   "quando": "Empresas com empregadas que tiveram licença",
+   "base": "STF Tema 72 (RE 576.967)",
+   "acao": "Recuperar contribuição patronal sobre salário-maternidade (5 anos).",
+   "url": "https://portal.stf.jus.br/repercussaogeral/",
+   "cond": {
+    "nao_simples": true
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "PIS/COFINS monofásico - segregação/recuperação",
+   "quando": "Revenda de produtos monofásicos (farma, combustível, autopeças, bebidas)",
+   "base": "Regime monofásico (Leis 10.147/2000, 10.485/2002 e afins)",
+   "acao": "Segregar receitas monofasicas e recuperar PIS/COFINS pago a maior (conforme o regime).",
+   "url": "https://www.gov.br/receitafederal/pt-br",
+   "cond": {
+    "cnae4_set": "MONOFASICO"
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Fator R - enquadramento Anexo III x Anexo V",
+   "quando": "Serviços onde a folha pesa (>=28% da receita)",
+   "base": "LC 123/2006, art. 18, parágrafos 5-J/5-M",
+   "acao": "Simular fator R: se folha/receita >= 28%, tributa pelo Anexo III (menor).",
+   "url": "https://www.gov.br/receitafederal/pt-br",
+   "cond": {
+    "regime": [
+     "simples"
+    ],
+    "setor": [
+     "servicos"
+    ],
+    "cnae2_set": "PROFISSIONAL"
+   }
+  },
+  {
+   "esfera": "Estadual",
+   "titulo": "Sublimite de ICMS/ISS no Simples (R$ 3,6 mi)",
+   "quando": "EPP que ultrapassa o sublimite",
+   "base": "LC 123/2006 - recolhimento de ICMS/ISS por fora do DAS",
+   "acao": "Conferir se ha recolhimento em duplicidade apos o sublimite.",
+   "url": "https://www.gov.br/receitafederal/pt-br",
+   "cond": {
+    "regime": [
+     "simples"
+    ],
+    "porte": [
+     "EPP"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Revisao de exclusão do Simples / reinclusão",
+   "quando": "Empresas excluídas ou em risco de exclusão",
+   "base": "LC 123/2006 e Resoluções CGSN",
+   "acao": "Verificar legalidade da exclusão e prazo/possibilidade de reinclusão.",
+   "url": "https://www.gov.br/receitafederal/pt-br",
+   "cond": {
+    "regime": [
+     "simples"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Desenquadramento/reenquadramento de MEI",
+   "quando": "MEI que estourou o teto ou mudou atividade",
+   "base": "LC 123/2006 - regras do MEI (teto R$ 81 mil/ano)",
+   "acao": "Avaliar migração para ME no Simples e regularização de excedente.",
+   "url": "https://www.gov.br/receitafederal/pt-br",
+   "cond": {
+    "regime": [
+     "mei"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Percentual de presunção reduzido - serviços hospitalares",
+   "quando": "Serviços de saúde com estrutura hospitalar",
+   "base": "STJ (equiparação a serviços hospitalares) - presunção 8%/12%",
+   "acao": "Se Presumido, verificar direito ao percentual menor (vs 32%).",
+   "url": "https://processo.stj.jus.br/repetitivos/temas_repetitivos/",
+   "cond": {
+    "nao_simples": true,
+    "setor": [
+     "servicos"
+    ],
+    "cnae2": [
+     "86"
+    ]
+   }
+  },
+  {
+   "esfera": "Estadual",
+   "titulo": "Créditos de ICMS - energia, ativo imobilizado, insumos",
+   "quando": "Indústria (não-cumulatividade do ICMS)",
+   "base": "LC 87/1996 (Lei Kandir)",
+   "acao": "Revisar creditamento de energia elétrica, bens do ativo e insumos.",
+   "url": "https://www.gov.br/pt-br/servicos-estaduais",
+   "cond": {
+    "setor": [
+     "industria"
+    ]
+   }
+  },
+  {
+   "esfera": "Estadual",
+   "titulo": "Restituição de ICMS-ST (base presumida > efetiva)",
+   "quando": "Comércio varejista sob substituição tributária",
+   "base": "STF Tema 201 (RE 593.849)",
+   "acao": "Se vendeu por valor menor que a base presumida, pedir restituição.",
+   "url": "https://portal.stf.jus.br/repercussaogeral/",
+   "cond": {
+    "setor": [
+     "comercio"
+    ]
+   }
+  },
+  {
+   "esfera": "Estadual",
+   "titulo": "DIFAL e base de cálculo em vendas interestaduais",
+   "quando": "Comércio que vende para outros estados/consumidor final",
+   "base": "EC 87/2015 e LC 190/2022",
+   "acao": "Conferir cálculo do DIFAL e eventuais recolhimentos indevidos.",
+   "url": "https://www.gov.br/pt-br/servicos-estaduais",
+   "cond": {
+    "setor": [
+     "comercio"
+    ]
+   }
+  },
+  {
+   "esfera": "Estadual",
+   "titulo": "Programa de parcelamento/anistia de ICMS (Sefaz-{uf})",
+   "quando": "Empresas com débito de ICMS",
+   "base": "Programas periódicos da Secretaria de Fazenda estadual",
+   "acao": "Buscar REFIS/parcelamento vigente na Sefaz-{uf}.",
+   "url": "https://www.google.com/search?q=parcelamento+ICMS+Sefaz+{uf}",
+   "cond": {
+    "uf": true
+   }
+  },
+  {
+   "esfera": "Municipal",
+   "titulo": "Local de incidência do ISS (bitributação)",
+   "quando": "Serviços prestados em mais de um município",
+   "base": "LC 116/2003, art. 3",
+   "acao": "Verificar se o ISS esta sendo pago no município correto (evitar duplicidade).",
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm",
+   "cond": {
+    "setor": [
+     "servicos"
+    ]
+   }
+  },
+  {
+   "esfera": "Municipal",
+   "titulo": "ISS fixo - sociedade uniprofissional",
+   "quando": "Sociedades de profissionais (advocacia, medicina, engenharia, contabilidade)",
+   "base": "DL 406/1968, art. 9, parágrafos 1 e 3 (recepcionado)",
+   "acao": "Avaliar ISS fixo por profissional em vez de % sobre faturamento.",
+   "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del0406.htm",
+   "cond": {
+    "setor": [
+     "servicos"
+    ],
+    "cnae2_set": "PROFISSIONAL"
+   }
+  },
+  {
+   "esfera": "Municipal",
+   "titulo": "Programa municipal de anistia/REFIS (ISS/IPTU)",
+   "quando": "Empresas com débito municipal",
+   "base": "Programas periódicos da prefeitura",
+   "acao": "Buscar REFIS municipal vigente na cidade da empresa.",
+   "url": "https://www.google.com/search?q=REFIS+ISS+{municipio}",
+   "cond": {}
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Adequação de NF-e/NFS-e aos campos de IBS e CBS",
+   "quando": "Empresas do regime regular (2026)",
+   "base": "LC 214/2025; obrigatoriedade dos campos a partir de 03/08/2026",
+   "acao": "Parametrizar sistemas e documentos fiscais para destacar IBS/CBS (2026 e ano-teste, apuração informativa, sem recolhimento se cumpridas as acessórias).",
+   "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
+   "cond": {
+    "regime_not": [
+     "mei"
+    ]
+   }
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Levantamento e homologação de créditos acumulados de ICMS",
+   "quando": "Empresas com saldo credor de ICMS",
+   "base": "LC 214/2025 - créditos não formalizados podem sofrer restrição na transição",
+   "acao": "Identificar, escriturar e comprovar os créditos ANTES dos marcos da transição para preservar o direito de uso/ressarcimento.",
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+   "cond": {
+    "regime_not": [
+     "mei"
+    ]
+   }
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Planejamento da transição 2026-2033 (preços, contratos, margens)",
+   "quando": "Todas as empresas do regime regular",
+   "base": "2027: CBS cheia, fim de PIS/COFINS, IS entra, IPI zerado (exceto ZFM). 2029-2032: ICMS/ISS migram para o IBS",
+   "acao": "Revisar formação de preco, cláusulas contratuais de reajuste tributário e fluxo de caixa (split payment) para os próximos anos.",
+   "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
+   "cond": {
+    "regime_not": [
+     "mei"
+    ]
+   }
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Impacto em serviços - possível aumento de carga",
+   "quando": "Prestadores de serviço (folha alta, poucos créditos)",
+   "base": "IVA dual com crédito amplo tende a onerar serviços intensivos em mao de obra",
+   "acao": "Simular a carga no novo modelo e avaliar reorganização/créditos disponíveis.",
+   "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
+   "cond": {
+    "regime_not": [
+     "mei"
+    ],
+    "setor": [
+     "servicos"
+    ]
+   }
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Enquadramento em regime diferenciado ou específico",
+   "quando": "Setores como saúde, educação, alimentos, transporte etc.",
+   "base": "LC 214/2025 - alíquotas reduzidas/regimes específicos (Anexos)",
+   "acao": "Verificar se a atividade tem redução de alíquota ou regime próprio no novo sistema.",
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+   "cond": {
+    "regime_not": [
+     "mei"
+    ]
+   }
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Simples x regime regular na reforma (híbrido)",
+   "quando": "Optantes do Simples Nacional",
+   "base": "LC 214/2025 - Simples dispensado das alíquotas-teste em 2026; opção pelo recolhimento de IBS/CBS 'por fora' pode dar crédito ao cliente",
+   "acao": "Avaliar se compensa recolher IBS/CBS por fora para gerar crédito a clientes PJ.",
+   "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
+   "cond": {
+    "regime": [
+     "simples"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Locação de imóveis próprios: exclusão do Simples a partir de 2026",
+   "quando": "Empresas com CNAE de aluguel/loteamento de imóveis próprios (grupo 6810), inclusive as que hoje estão no Simples",
+   "base": "LC 123/2006, art. 17, XV; LC 214/2025 (retirou a exceção do ISS); Res. CGSN 140/2018, art. 15, XXIII, e art. 8º, §4º, II (efeitos a partir de 01/01/2026)",
+   "acao": "Confirmar a atividade efetiva (aluguel de imóveis próprios é vedado; sublocação de imóveis de terceiros é permitida e cai no Anexo III). Planejar a migração de regime e a reestruturação societária antes da exclusão, evitando autuação e exclusão retroativa.",
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+   "cond": {
+    "cnae4_set": "IMOBILIARIO"
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Atividade vedada ao Simples: risco de exclusão retroativa",
+   "quando": "Optantes pelo Simples cujo CNAE consta entre as atividades impeditivas",
+   "base": "LC 123/2006, art. 17; Res. CGSN 140/2018 (Anexos VI e VII)",
+   "acao": "Revisar CNAEs principal e secundários e as receitas efetivamente auferidas. A simples existência de CNAE impeditivo no cadastro já impede a opção. Avaliar saneamento do cadastro, reorganização de atividades e defesa administrativa em caso de exclusão de ofício.",
+   "url": "https://www8.receita.fazenda.gov.br/simplesnacional/",
+   "cond": {
+    "regime": [
+     "simples"
+    ],
+    "cnae4_set": "VEDADOS_SIMPLES"
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "CNAE secundário impeditivo: saneamento do cadastro",
+   "quando": "Empresas do Simples com CNAEs secundários que não são faturados",
+   "base": "LC 123/2006, art. 17; Res. CGSN 140/2018, Anexos VI e VII",
+   "acao": "Conferir o cadastro no CNPJ e retirar CNAEs impeditivos que não correspondem à atividade real, antes da opção ou da fiscalização.",
+   "url": "https://www8.receita.fazenda.gov.br/simplesnacional/",
+   "cond": {
+    "regime": [
+     "simples"
+    ]
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Cessão ou locação de mão de obra: vedação e exceções do Anexo IV",
+   "quando": "Empresas que cedem ou locam mão de obra",
+   "base": "LC 123/2006, art. 17, XII, e art. 18, §5º-C (Anexo IV)",
+   "acao": "Verificar se a atividade se enquadra nas exceções (construção civil, vigilância, limpeza e conservação). Fora delas, a cessão de mão de obra veda o Simples - avaliar reorganização contratual.",
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+   "cond": {
+    "cnae4_set": "MAO_DE_OBRA"
+   }
+  },
+  {
+   "esfera": "Federal",
+   "titulo": "Bebidas alcoólicas: vedação com exceção para pequenos produtores",
+   "quando": "Fabricação ou atacado de bebidas alcoólicas",
+   "base": "LC 123/2006, art. 17, X, 'c'; LC 155/2016 (exceção para micro e pequenas cervejarias, vinícolas, destilarias e produtores de licores)",
+   "acao": "Confirmar registro no MAPA e o enquadramento como micro/pequeno produtor para manter o Simples; caso contrário, planejar a migração de regime.",
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm",
+   "cond": {
+    "cnae4_set": "BEBIDAS_ALCOOLICAS"
+   }
+  },
+  {
+   "esfera": "Reforma",
+   "titulo": "Locação de imóveis na reforma: IBS/CBS e regime específico",
+   "quando": "Locadores pessoa jurídica de imóveis próprios",
+   "base": "EC 132/2023 e LC 214/2025 (regime específico de bens imóveis)",
+   "acao": "Avaliar o regime específico previsto para operações com bens imóveis, o impacto do IBS/CBS sobre a receita de aluguel e a revisão de contratos e preços na transição.",
+   "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria",
+   "cond": {
+    "cnae4_set": "IMOBILIARIO"
+   }
+  }
+ ]
 }
